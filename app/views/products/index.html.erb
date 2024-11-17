@@ -1,0 +1,37 @@
+<p style="color: green"><%= notice %></p>
+
+<% content_for :title, "Products" %>
+
+<h1>Products</h1>
+
+<div id="products">
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col"><strong>Name:</strong></th>
+        <th scope="col"><strong>Description:</strong></th>
+        <th scope="col"><strong>Price:</strong></th>
+        <th scope="col"><strong>Stock:</strong></th>
+        <th scope="col"><strong>Talla:</strong></th>
+      </tr>
+    </thead>
+    <% @products.each do |product| %>
+      <tbody>
+        <tr>
+          <th scope="row"><%= product.id %></th>
+          <td><%= product.name %></td>
+          <td><%= product.description %></td>
+          <td><%= product.price %></td>
+          <td><%= product.stock %></td>
+          <td><%= product.talla %></td>
+          <td><button type="button" class="btn btn-primary" ><%= link_to "Ver", product, style: "color: white !important" %></button></td>
+          <td><button type="button" class="btn btn-primary" ><%= link_to "Edit this product", edit_product_path(product), style: "color: white !important" %></button></td>
+          <td><button type="button" class="btn btn-primary" ><%= link_to "Destroy this product", @product, method: :delete, style: "color: white !important" %></button></td>
+        </tr>
+      </tbody>
+    <% end %>
+  </table>
+</div>
+
+<%= link_to "New product", new_product_path %>
